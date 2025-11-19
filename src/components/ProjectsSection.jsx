@@ -20,7 +20,7 @@ Objectifs principaux :
     detailedImage: "/projects/project1-large.jpg", // image modal
     tags: ["VBA", "Modélisation", "Solvabilité II"],
     demoUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Ayuri90/Climate-risk-modeliling-ORSA",
   },
   {
     id: 2,
