@@ -2,7 +2,7 @@
 
 Portfolio personnel présentant mon parcours en **actuariat & data science** : modélisation des risques, statistiques appliquées à l'assurance et outils décisionnels.
 
-🔗 **Site en ligne :** _(à compléter avec ton URL Vercel)_
+🔗 **Site en ligne :** [_frege_portfolio_](https://frege-portfolio.vercel.app/)
 
 ---
 
