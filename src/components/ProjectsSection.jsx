@@ -3,6 +3,32 @@ import { ArrowRight, ExternalLink, Github, X } from "lucide-react";
 
 const projects = [
   {
+    id: 6,
+    title: "Tarification auto — Prime pure par GLM & Machine Learning",
+    description:
+      "Modèle de prime pure en assurance auto (RC) sur données freMTPL, comparant GLM classique et machine learning (LightGBM, Tweedie).",
+    detailedDescription: `
+Construction complète d'un modèle de prime pure en assurance automobile (responsabilité civile) sur le jeu de données freMTPL (413 169 polices, 16 181 sinistres), avec comparaison entre l'approche actuarielle classique (GLM) et le machine learning.
+
+Objectifs principaux :
+- Décomposer la prime pure en fréquence × sévérité.
+- Modéliser la fréquence (Poisson avec offset d'exposition) et la sévérité (Gamma) par GLM.
+- Benchmarker le GLM contre LightGBM (fréquence/sévérité) et un modèle Tweedie direct (p = 1,5).
+- Appliquer un traitement actuariel des sinistres graves (écrêtement au 99,5e percentile) et une recalibration globale (S/P = 1).
+- Interpréter les modèles ML via l'analyse SHAP.
+
+Résultats clés :
+- GLM fréquence × sévérité : Gini = 0,191 et S/P = 0,923 — meilleur pouvoir de segmentation.
+- À contraintes actuarielles identiques, le GLM conserve un avantage de segmentation sur le ML.
+- La sévérité s'avère quasi non-segmentable ; l'exposition présente une endogénéité partielle aux sinistres.
+`,
+    image: "/projects/pricing.svg",              // image carte
+    detailedImage: "/projects/pricing.svg", // image modal
+    tags: ["Python", "GLM", "LightGBM", "Tarification"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Ayuri90/pricing_auto_glm_ml",
+  },
+  {
     id: 1,
     title: "Risque climatique & projection BSCR",
     description:

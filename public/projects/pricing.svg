@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="hsl(222, 47%, 10%)" />
+      <stop offset="100%" stop-color="hsl(250, 45%, 22%)" />
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="hsl(250, 65%, 55%)" />
+      <stop offset="100%" stop-color="hsl(250, 70%, 72%)" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)" />
+
+  <!-- Grille discrète -->
+  <g stroke="hsl(250, 40%, 60%)" stroke-opacity="0.12" stroke-width="1">
+    <line x1="60" y1="330" x2="740" y2="330" />
+    <line x1="60" y1="250" x2="740" y2="250" />
+    <line x1="60" y1="170" x2="740" y2="170" />
+  </g>
+
+  <!-- Histogramme (fréquence) -->
+  <g fill="url(#bar)">
+    <rect x="90"  y="250" width="46" height="80"  rx="4" />
+    <rect x="160" y="205" width="46" height="125" rx="4" />
+    <rect x="230" y="160" width="46" height="170" rx="4" />
+    <rect x="300" y="120" width="46" height="210" rx="4" />
+    <rect x="370" y="185" width="46" height="145" rx="4" />
+  </g>
+
+  <!-- Courbe de lift (modèle ML) -->
+  <polyline points="470,300 520,240 570,195 620,150 680,110 730,95"
+    fill="none" stroke="hsl(45, 90%, 62%)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <g fill="hsl(45, 90%, 62%)">
+    <circle cx="470" cy="300" r="5" /><circle cx="570" cy="195" r="5" /><circle cx="680" cy="110" r="5" />
+  </g>
+
+  <!-- Titres -->
+  <text x="60" y="70" fill="#ffffff" font-size="34" font-weight="700">Tarification auto</text>
+  <text x="60" y="108" fill="hsl(250, 70%, 78%)" font-size="22" font-weight="600">Prime pure · GLM × Machine Learning</text>
+
+  <!-- Badges métriques -->
+  <g font-size="17" font-weight="600">
+    <rect x="60"  y="378" width="150" height="40" rx="20" fill="hsl(250,65%,60%)" fill-opacity="0.18" />
+    <text x="135" y="404" fill="hsl(250,70%,82%)" text-anchor="middle">Gini 0,191</text>
+    <rect x="225" y="378" width="130" height="40" rx="20" fill="hsl(250,65%,60%)" fill-opacity="0.18" />
+    <text x="290" y="404" fill="hsl(250,70%,82%)" text-anchor="middle">S/P 0,92</text>
+    <rect x="370" y="378" width="200" height="40" rx="20" fill="hsl(250,65%,60%)" fill-opacity="0.18" />
+    <text x="470" y="404" fill="hsl(250,70%,82%)" text-anchor="middle">freMTPL · 413k polices</text>
+  </g>
+</svg>
