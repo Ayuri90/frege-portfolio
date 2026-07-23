@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, ExternalLink, Github, X } from "lucide-react";
 
 const projects = [
@@ -112,6 +112,23 @@ export const ProjectsSection = () => {
   const [visibleCount, setVisibleCount] = useState(3);
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Ferme la modale avec la touche Échap et bloque le scroll de l'arrière-plan
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setSelectedProject(null);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
+
   const toggleProjects = () => {
     if (visibleCount < projects.length) {
       setVisibleCount(projects.length);
@@ -167,17 +184,22 @@ export const ProjectsSection = () => {
                   <div className="flex space-x-3">
                     <button
                       onClick={() => setSelectedProject(project)}
+                      aria-label={`Voir les détails du projet ${project.title}`}
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
                       <ExternalLink size={20} />
                     </button>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <Github size={20} />
-                    </a>
+                    {project.githubUrl && project.githubUrl !== "#" && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Code source du projet ${project.title} sur GitHub`}
+                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      >
+                        <Github size={20} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -195,6 +217,7 @@ export const ProjectsSection = () => {
           <a
             href="https://github.com/Ayuri90"
             target="_blank"
+            rel="noopener noreferrer"
             className="cosmic-button flex items-center gap-2"
           >
             GitHub <ArrowRight size={16} />
@@ -204,8 +227,17 @@ export const ProjectsSection = () => {
 
       {/* Modal détaillé */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
-          <div className="bg-card w-full max-w-5xl h-[90vh] rounded-lg overflow-hidden relative flex flex-col md:flex-row">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          onClick={() => setSelectedProject(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedProject.title}
+        >
+          <div
+            className="bg-card w-full max-w-5xl h-[90vh] rounded-lg overflow-hidden relative flex flex-col md:flex-row"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Image */}
             <div className="md:w-1/2 h-64 md:h-auto overflow-hidden">
               <img
